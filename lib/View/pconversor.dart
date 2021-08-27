@@ -75,6 +75,7 @@ class PconversorState extends State<Pconversor> {
                   },
                 ),
                 new SizedBox(height: 20),
+                 //Botao conversor
                 new Text("Resultado ${control.calcular}",
                     style: TextStyle(fontSize: 28)),
                 new SizedBox(height: 20),
