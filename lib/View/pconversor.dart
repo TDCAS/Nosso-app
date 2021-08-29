@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nosso_app/Controller/controlador.dart';
 
 class Pconversor extends StatefulWidget {
   @override
@@ -7,10 +6,21 @@ class Pconversor extends StatefulWidget {
 }
 
 class PconversorState extends State<Pconversor> {
-  List<String> listinha = ["Dolar", "Real", "Peso"];
-  List<int> numero = [0, 1];
-  var dropdownValue = 0;
-  Controlador control = new Controlador();
+  TextEditingController campo1 = new TextEditingController(text: "1");
+  TextEditingController campo2 = new TextEditingController(text: "");
+  num dolar = 0;
+  num real = 0;
+  num resultado = 0;
+
+  void calcular() {
+    setState(() {
+      dolar = 5;
+      real = num.parse(campo1.text);
+      dolar = 5;
+      resultado = real * dolar;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +41,12 @@ class PconversorState extends State<Pconversor> {
                   value: 1,
                   items: [
                     DropdownMenuItem(
-                      child: Text(listinha[0]),
-                      value: numero[0],
+                      child: Text("real"),
+                      value: 1,
                     ),
                     DropdownMenuItem(
-                      child: Text(listinha[1]),
-                      value: numero[1],
+                      child: Text("Dolar"),
+                      value: 2,
                     )
                   ],
                   onChanged: (value) {
@@ -47,7 +57,7 @@ class PconversorState extends State<Pconversor> {
                 ),
                 //barra de digitaçao 1
                 new TextField(
-                    controller: control.campo1,
+                    controller: campo1,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey)),
@@ -60,12 +70,12 @@ class PconversorState extends State<Pconversor> {
                   value: 0,
                   items: [
                     DropdownMenuItem(
-                      child: Text(listinha[0]),
-                      value: numero[0],
+                      child: Text("Dolar"),
+                      value: 0,
                     ),
                     DropdownMenuItem(
-                      child: Text(listinha[1]),
-                      value: numero[1],
+                      child: Text("Dolar"),
+                      value: 1,
                     )
                   ],
                   onChanged: (value) {
@@ -75,8 +85,7 @@ class PconversorState extends State<Pconversor> {
                   },
                 ),
                 new SizedBox(height: 20),
-                 //Texto do resultado
-                new Text("Resultado ${control.calcular}",
+                new Text("Resultado $resultado",
                     style: TextStyle(fontSize: 28)),
                 new SizedBox(height: 20),
                 //Botao CONVERTER
@@ -86,7 +95,7 @@ class PconversorState extends State<Pconversor> {
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                   color: Colors.yellow,
-                  onPressed: control.calcular,
+                  onPressed: calcular,
                 )
               ],
             )),
