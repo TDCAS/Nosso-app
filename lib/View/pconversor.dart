@@ -7,17 +7,27 @@ class Pconversor extends StatefulWidget {
 
 class PconversorState extends State<Pconversor> {
   TextEditingController campo1 = new TextEditingController(text: "1");
-  TextEditingController campo2 = new TextEditingController(text: "");
   num dolar = 0;
   num real = 0;
   num resultado = 0;
+  int oloko = 1;
+  int caminhos = 1;
+  int bar = 2;
+  int log = 2;
 
   void calcular() {
     setState(() {
-      dolar = 5;
-      real = num.parse(campo1.text);
-      dolar = 5;
-      resultado = real * dolar;
+      if (caminhos == log) {
+        resultado = num.parse(campo1.text);
+      } else if (caminhos == 1) {
+        dolar = 5;
+        real = num.parse(campo1.text);
+        resultado = real / dolar;
+      } else {
+        real = 5;
+        dolar = num.parse(campo1.text);
+        resultado = real * dolar;
+      }
     });
   }
 
@@ -36,22 +46,28 @@ class PconversorState extends State<Pconversor> {
               children: [
                 //Menu de escolhas 1
                 new DropdownButton(
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                   isExpanded: true,
-                  value: 1,
+                  value: caminhos,
                   items: [
                     DropdownMenuItem(
-                      child: Text("real"),
+                      child: Text("Real"),
                       value: 1,
+                      onTap: () {
+                        oloko = 1;
+                      },
                     ),
                     DropdownMenuItem(
                       child: Text("Dolar"),
                       value: 2,
-                    )
+                      onTap: () {
+                        oloko = 2;
+                      },
+                    ),
                   ],
                   onChanged: (value) {
                     setState(() {
-                      value = value;
+                      caminhos = oloko;
                     });
                   },
                 ),
@@ -66,21 +82,25 @@ class PconversorState extends State<Pconversor> {
                 //Menu de escolhas
 
                 new DropdownButton(
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                  value: 0,
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  value: log,
                   items: [
                     DropdownMenuItem(
-                      child: Text("Dolar"),
-                      value: 0,
-                    ),
+                        child: Text("Real"),
+                        value: 1,
+                        onTap: () {
+                          bar = 1;
+                        }),
                     DropdownMenuItem(
-                      child: Text("Dolar"),
-                      value: 1,
-                    )
+                        child: Text("Dolar"),
+                        value: 2,
+                        onTap: () {
+                          bar = 2;
+                        })
                   ],
                   onChanged: (value) {
                     setState(() {
-                      value = value;
+                      log = bar;
                     });
                   },
                 ),
