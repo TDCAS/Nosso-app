@@ -18,7 +18,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 # Nosso-app
 
-Seguinte mano ta dando erro nele agr nao adianta abrir pq temque colocar tudo pra Pconversor para poder abrir tem algumas coisa pra fazer
-em DropdownButton se quiser modifica os bgl vai fundo
-mas dps que terminarem mandem um codigo de algum geito pra mim
 
